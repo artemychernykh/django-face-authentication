@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename ='style.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename ='style.css')}}" type="text/css">
+        <title> Страница входа </title>
+    </head>
+    <style>
+    p
+    {
+        color:white;
+        font-size: 20px;
+    }
+    body
+    {
+        background-color: #aaa;
+    }
+    .navbar
+    {
+        padding: 10px;
+    }
+    .login-field
+    {
+        margin: 70px 10px 0px 10px;
+        
+    }
+    .form-control
+    {
+        color: #bbb;
+    }
+    
+    #log-in,
+    #password-field,
+    #a-photo
+    {
+        display: none;
+    }
+    
+    </style>
+    <script>
+        function a(event) {
+            var element = document.getElementsByName("login-field")[0];
+            var element = event.currentTarget;
+            if (element.style.color !== 'black') {
+                element.value = '';
+                element.style.color = 'black';
+            }
+        }
+        
+        function changeDispay(elements, displayValue) {
+            Array.prototype.forEach.call(elements, function(element) {
+                element.style.display = displayValue;
+            });
+        }
+        
+        function passwordIn(event) {
+            var elementsPassword = document.getElementsByClassName("for-pass");
+            var elementsPhoto = document.getElementsByClassName("for-photo");
+            changeDispay(elementsPassword, 'block');
+            changeDispay(elementsPhoto, 'none');
+            
+            
+        }
+        function photoIn(event) {
+            var elementsPassword = document.getElementsByClassName("for-pass");
+            var elementsPhoto = document.getElementsByClassName("for-photo");
+            changeDispay(elementsPassword, 'none');
+            changeDispay(elementsPhoto, 'block');
+            
+        }
+    </script>
+    <body>
+    <main class="row">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <p>Страница аутентификации</p>           
+        </div>
+        <section class="login-field panel panel-default col-md-3">
+            <div class="panel-body"> 
+             <form class="navbar-form" role="form" name="login">
+                <div class="form-group">
+                <input type="text" placeholder="" value="login" class="form-control" name="login-field" onclick="a(event)">
+                </div>
+                <br>
+                <div class="form-group">
+                <input type="password" placeholder="" value="password" class="for-pass form-control" id="password-field" name="password-field" onclick="a(event)">
+                </div>
+                <br>
+                <input type="button" value="сделать снимок" id="make-shoot" class="btn btn-default for-photo">
+                <br>
+                <input type="button" value="войти" name="log-in" id="log-in" class="btn btn-default for-pass">
+            </form>
+            <a href="#" onclick="passwordIn(event)" id="a-password" class="for-photo">войти по паролю </a>
+            <a href="#" onclick="photoIn(event)" id="a-photo" class="for-pass">войти по фото </a>
+            </div>
+        </section>
+    </main>
+    </body>
